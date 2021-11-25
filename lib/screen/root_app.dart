@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:social_media/screen/home_page.dart';
 import 'package:social_media/theme/colors.dart';
 
 class RootApp extends StatefulWidget {
@@ -14,7 +15,34 @@ class _RootAppState extends State<RootApp> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        backgroundColor: kWhite,
+        appBar: PreferredSize(
+          preferredSize: Size.fromHeight(70),
+          child: getAppBar(),
+        ),
+        body: getBody(),
         bottomNavigationBar: getFooter(),
+      ),
+    );
+  }
+
+  Widget getAppBar() {
+    return AppBar(
+      elevation: 0,
+      backgroundColor: kWhite,
+      title: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: const [
+          Text(
+            "Social UI KIT",
+            style: TextStyle(color: kBlack, fontSize: 18, fontWeight: FontWeight.bold),
+          ),
+          Icon(
+            Icons.notifications_none,
+            color: kBlack,
+            size: 25,
+          ),
+        ],
       ),
     );
   }
@@ -121,6 +149,24 @@ class _RootAppState extends State<RootApp> {
           )
         ],
       ),
+    );
+  }
+
+  Widget getBody() {
+    return IndexedStack(
+      index: activeTab,
+      children: const [
+        HomePage(),
+        Center(
+          child: Text("hessage"),
+        ),
+        Center(
+          child: Text("favorite"),
+        ),
+        Center(
+          child: Text("Profile"),
+        ),
+      ],
     );
   }
 }

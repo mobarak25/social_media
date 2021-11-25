@@ -12,7 +12,9 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Social UI Kit',
-      theme: ThemeData(),
+      theme: ThemeData(
+        textTheme: TextTheme(),
+      ),
       home: RootApp(),
     );
   }
